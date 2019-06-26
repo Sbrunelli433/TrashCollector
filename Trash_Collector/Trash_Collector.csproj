@@ -172,13 +172,20 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\userscontroller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201906251907400_InitialMigration.cs" />
     <Compile Include="Migrations\201906251907400_InitialMigration.Designer.cs">
       <DependentUpon>201906251907400_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906261550259_Customers.cs" />
+    <Compile Include="Migrations\201906261550259_Customers.Designer.cs">
+      <DependentUpon>201906261550259_Customers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906261552560_employees.cs" />
+    <Compile Include="Migrations\201906261552560_employees.Designer.cs">
+      <DependentUpon>201906261552560_employees.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -255,7 +262,6 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\userscontroller\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -276,6 +282,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906251907400_InitialMigration.resx">
       <DependentUpon>201906251907400_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906261550259_Customers.resx">
+      <DependentUpon>201906261550259_Customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906261552560_employees.resx">
+      <DependentUpon>201906261552560_employees.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
