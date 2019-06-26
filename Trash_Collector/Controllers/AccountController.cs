@@ -18,6 +18,7 @@ namespace Trash_Collector.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        ApplicationDbContext context;
         public AccountController()
         {
             context = new ApplicationDbContext();
@@ -140,7 +141,7 @@ namespace Trash_Collector.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Customer"))
+            ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                             .ToList(), "Name", "Name");
             return View();
         }
