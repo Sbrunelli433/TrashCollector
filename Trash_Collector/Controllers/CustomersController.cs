@@ -17,10 +17,10 @@ namespace Trash_Collector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.Customers.ToList());
+            //return View(db.Customers.ToList());
 
-            //var customers = db.Customers.Include(m => m.Employees).ToList();
-            //return View(customers);
+            var customers = db.Customers.Include(m => m.ApplicationUser).ToList();
+            return View(customers);
         }
 
         // GET: Customers/Details/5
