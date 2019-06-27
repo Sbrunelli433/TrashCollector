@@ -169,7 +169,7 @@ namespace Trash_Collector.Controllers
                     //Assign Role to user Here      
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     //Ends Here    
-                    return RedirectToAction("Index", "Home","Home");
+                    return RedirectToAction("Index", user.Id,"Index");
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                           .ToList(), "Name", "Name");

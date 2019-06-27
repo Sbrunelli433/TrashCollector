@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Trash_Collector.Models;
 
 namespace Trash_Collector.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
+
         public ActionResult Index()
         {
-            return View();
+            
+            return View(db.Customers.ToList());
         }
 
         public ActionResult About()
