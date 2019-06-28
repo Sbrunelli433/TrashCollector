@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Trash_Collector.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Trash_Collector.Controllers
 {
@@ -46,7 +47,7 @@ namespace Trash_Collector.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Customers, "Id", "Fullname");
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
@@ -59,11 +60,12 @@ namespace Trash_Collector.Controllers
         {
             if (ModelState.IsValid)
             {
-                //customer.ApplicationId = System.Web.Current.User.Identity.Name;
+                customer.ApplicationId = User.Identity.GetUserId();
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", customer.ApplicationId);
             return View(customer);
         }
 

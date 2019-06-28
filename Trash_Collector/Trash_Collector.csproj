@@ -195,6 +195,10 @@
     <Compile Include="Migrations\201906281927297_Customers2.Designer.cs">
       <DependentUpon>201906281927297_Customers2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906282046487_updatedCustomers.cs" />
+    <Compile Include="Migrations\201906282046487_updatedCustomers.Designer.cs">
+      <DependentUpon>201906282046487_updatedCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -272,6 +276,7 @@
     <Content Include="Views\Employees\Delete.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Customers\CustomerAccountSettings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -304,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906281927297_Customers2.resx">
       <DependentUpon>201906281927297_Customers2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906282046487_updatedCustomers.resx">
+      <DependentUpon>201906282046487_updatedCustomers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

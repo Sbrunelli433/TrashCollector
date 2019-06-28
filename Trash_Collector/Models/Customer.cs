@@ -18,31 +18,31 @@ namespace Trash_Collector.Models
         public ApplicationUser ApplicationUser { get; set; }
 
         [Display(Name = "First Name")]
-        [StringLength(20)]
+        [StringLength(50)]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [StringLength(20)]
+        [StringLength(50)]
         public string LastName { get; set; }
 
         [Display(Name = "Email Address")]
-        [StringLength(20)]
+        [StringLength(50)]
         public string EmailAddress { get; set; }
 
         [Display(Name = "Username")]
-        [StringLength(20)]
+        [StringLength(50)]
         public string Username { get; set; }
 
         [Display(Name = "Address")]
-        [StringLength(20)]
+        [StringLength(50)]
         public string Address { get; set; }
 
         [Display(Name = "City")]
-        [StringLength(20)]
+        [StringLength(50)]
         public string City { get; set; }
 
         [Display(Name = "State")]
-        [StringLength(2)]
+        [StringLength(50)]
 
         public string State { get; set; }
 
@@ -50,11 +50,11 @@ namespace Trash_Collector.Models
         public int Zipcode { get; set; }
 
         [Display(Name = "Pick Up Day")]
-        public string PickUpDay { get; set; }
+        public DateTime PickUpDay { get; set; }
 
 
        
-        public virtual IEnumerable<ApplicationId> ApplicationIds { get; set; }
+        //public virtual IEnumerable<ApplicationId> ApplicationIds { get; set; }
 
 
         //Choose Pick Up Day
