@@ -82,7 +82,18 @@ namespace Trash_Collector.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    if (User.IsInRole("Customer"))
+                    {
+                        return RedirectToAction("Index", "Customers");
+                    }
+                    else if (User.IsInRole("Employee"))
+                    {
+                        return RedirectToAction("Index", "Employees");
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -169,13 +180,18 @@ namespace Trash_Collector.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");   
                     //Assign Role to user Here      
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+
                     if (model.UserRoles == "Customer")
                     {
+                        User.Identity.GetUserId();
+
                         return RedirectToAction("Create", "Customers");
                     }
                     else if (model.UserRoles == "Employee")
                     {
-                         return RedirectToAction("Index", "Employees");
+                        User.Identity.GetUserId();
+
+                        return RedirectToAction("Index", "Employees");
                     }
 
                     //Ends Here    
@@ -186,7 +202,6 @@ namespace Trash_Collector.Controllers
                                           .ToList(), "Name", "Name");
                 AddErrors(result);
             }
-
             // If we got this far, something failed, redisplay form   
             return View(model);
         }

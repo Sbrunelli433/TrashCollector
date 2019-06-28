@@ -12,41 +12,57 @@ namespace Trash_Collector.Models
         [Key]
         public int Id { get; set; }
 
-
-
+        [ForeignKey("ApplicationUser")]
+        [Display(Name = "Application Id")]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         [Display(Name = "First Name")]
+        [StringLength(20)]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
+        [StringLength(20)]
         public string LastName { get; set; }
 
         [Display(Name = "Email Address")]
+        [StringLength(20)]
         public string EmailAddress { get; set; }
 
         [Display(Name = "Username")]
+        [StringLength(20)]
         public string Username { get; set; }
 
         [Display(Name = "Address")]
+        [StringLength(20)]
         public string Address { get; set; }
 
         [Display(Name = "City")]
+        [StringLength(20)]
         public string City { get; set; }
 
         [Display(Name = "State")]
+        [StringLength(2)]
+
         public string State { get; set; }
 
         [Display(Name = "Zipcode")]
         public int Zipcode { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        public string ApplicationId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        [Display(Name = "Pick Up Day")]
+        public string PickUpDay { get; set; }
 
-        //[Display(ApplicationId = "ApplicationId")]
-        //public int ApplicationId { get; set; }
-        //public ApplicationId ApplicationId { get; set; }
-        //public IEnumerable<ApplicationId> ApplicationIds { get; set; }
 
+       
+        public virtual IEnumerable<ApplicationId> ApplicationIds { get; set; }
+
+
+        //Choose Pick Up Day
+        //Extra Pick Up Day
+        //See Bill
+        //Trash Collection Start Date & End Date
+        //Suspend Service
+            //Suspend Service Start Date & End Date
+            //Resume Service Start Date
     }
 }

@@ -46,6 +46,7 @@ namespace Trash_Collector.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            ViewBag.UserId = new SelectList(db.Customers, "Id", "Fullname");
             return View();
         }
 
@@ -58,11 +59,11 @@ namespace Trash_Collector.Controllers
         {
             if (ModelState.IsValid)
             {
+                //customer.ApplicationId = System.Web.Current.User.Identity.Name;
                 db.Customers.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(customer);
         }
 

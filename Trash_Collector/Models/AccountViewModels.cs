@@ -60,6 +60,10 @@ namespace Trash_Collector.Models
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        //[Required]
+        //[Display(Name = "Role")]
+        //public string Role {get; set;}
     }
 
     public class RegisterViewModel
