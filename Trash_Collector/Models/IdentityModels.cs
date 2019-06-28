@@ -22,7 +22,7 @@ namespace Trash_Collector.Models
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -32,5 +32,7 @@ namespace Trash_Collector.Models
         {
             return new ApplicationDbContext();
         }
+
+        //public System.Data.Entity.DbSet<Trash_Collector.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

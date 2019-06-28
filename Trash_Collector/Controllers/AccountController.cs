@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -168,8 +169,18 @@ namespace Trash_Collector.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");   
                     //Assign Role to user Here      
                     await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+                    if (model.UserRoles == "Customer")
+                    {
+                        return RedirectToAction("Create", "Customers");
+                    }
+                    else if (model.UserRoles == "Employee")
+                    {
+                         return RedirectToAction("Index", "Employees");
+                    }
+
                     //Ends Here    
-                    return RedirectToAction("Index", user.Id,"Index");
+                    return RedirectToAction("Index", "Home");
+
                 }
                 ViewBag.Name = new SelectList(context.Roles.Where(u => !u.Name.Contains("Admin"))
                                           .ToList(), "Name", "Name");

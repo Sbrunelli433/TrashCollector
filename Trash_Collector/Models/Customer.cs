@@ -12,9 +12,7 @@ namespace Trash_Collector.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        public string ApplicationId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+
 
 
         [Display(Name = "First Name")]
@@ -40,5 +38,15 @@ namespace Trash_Collector.Models
 
         [Display(Name = "Zipcode")]
         public int Zipcode { get; set; }
+
+        [ForeignKey("ApplicationUser")]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+        //[Display(ApplicationId = "ApplicationId")]
+        //public int ApplicationId { get; set; }
+        //public ApplicationId ApplicationId { get; set; }
+        //public IEnumerable<ApplicationId> ApplicationIds { get; set; }
+
     }
 }

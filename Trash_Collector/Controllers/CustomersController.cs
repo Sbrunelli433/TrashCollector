@@ -12,15 +12,20 @@ namespace Trash_Collector.Controllers
 {
     public class CustomersController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext db;
+        public CustomersController()
+        {
+            db = new ApplicationDbContext();
+        }
 
         // GET: Customers
         public ActionResult Index()
         {
-            return View(db.ApplicationUsers.ToList());
+            //return View(db.Customers.ToList());
 
-            //var customers = db.Customers.Include(m => m.ApplicationUser).ToList();
-            //return View(customers);
+            //var customers = db.Customers.Include(m => m.ApplicationId).ToList();
+            var customers = db.Customers.ToList();
+            return View(customers);
         }
 
         // GET: Customers/Details/5
@@ -49,7 +54,7 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id")] Customer customer)
+        public ActionResult Create([Bind(Include = "Address, ApplicationId, ApplicationUser, City, EmailAddress, FirstName, Id, LastName, State, Username, Zipcode")] Customer customer)
         {
             if (ModelState.IsValid)
             {

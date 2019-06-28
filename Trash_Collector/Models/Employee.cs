@@ -12,9 +12,6 @@ namespace Trash_Collector.Models
         [Key]
         public int Id{ get; set; }
 
-        //[ForeignKey("ApplicationUser")]
-        //public string ApplicationId { get; set; }
-        //public virtual ApplicationUser ApplicationUser { get; set; }
 
         [Display(Name = "First Name")]
         public string FirstName { get; set; }

@@ -9,12 +9,13 @@ namespace Trash_Collector.Controllers
 {
     public class HomeController : Controller
     {
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
 
         public ActionResult Index()
         {
-            
+            //return View(db.AspNetUsers.ToList());
             return View(db.Customers.ToList());
         }
 
