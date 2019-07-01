@@ -25,7 +25,7 @@ namespace Trash_Collector.Controllers
             //return View(db.Customers.ToList());
 
             //var customers = db.Customers.Include(m => m.ApplicationId).ToList();
-            var customers = db.Customers.ToList();
+            var customers = db.Customers.Select(i => i.ApplicationId).SingleOrDefault();
             return View(customers);
         }
 
@@ -56,14 +56,14 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Address, UserName, ApplicationId, ApplicationUser, City, EmailAddress, FirstName, Id, LastName, State, Zipcode")] Customer customer)
+        public ActionResult Create([Bind(Include = "Address, UserName, ApplicationId, ApplicationUser, City, EmailAddress, FirstName, Id, LastName, State, Zipcode, PickUpDay, ExraPickUpDay, ServiceStartDate, ServiceEndDate, SuspendServiceStartDate, SuspendServiceEndDate ")] Customer customer)
         {
             if (ModelState.IsValid)
             {
                 customer.ApplicationId = User.Identity.GetUserId();
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = customer.Id});
             }
             //ViewBag.UserId = new SelectList(db.Users, "Id", "FirstName", customer.ApplicationId);
             return View(customer);

@@ -3,7 +3,7 @@
 }
 
 @{
-    if (this.User.IsInRole("Customer"))
+    if (Roles.IsUserInRole("Customer"))
     {
         Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
     }

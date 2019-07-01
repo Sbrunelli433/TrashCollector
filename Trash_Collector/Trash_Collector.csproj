@@ -175,41 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906251907400_InitialMigration.cs" />
-    <Compile Include="Migrations\201906251907400_InitialMigration.Designer.cs">
-      <DependentUpon>201906251907400_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906261550259_Customers.cs" />
-    <Compile Include="Migrations\201906261550259_Customers.Designer.cs">
-      <DependentUpon>201906261550259_Customers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906261552560_employees.cs" />
-    <Compile Include="Migrations\201906261552560_employees.Designer.cs">
-      <DependentUpon>201906261552560_employees.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906271538014_Customers1.cs" />
-    <Compile Include="Migrations\201906271538014_Customers1.Designer.cs">
-      <DependentUpon>201906271538014_Customers1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906281927297_Customers2.cs" />
-    <Compile Include="Migrations\201906281927297_Customers2.Designer.cs">
-      <DependentUpon>201906281927297_Customers2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906282046487_updatedCustomers.cs" />
-    <Compile Include="Migrations\201906282046487_updatedCustomers.Designer.cs">
-      <DependentUpon>201906282046487_updatedCustomers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907011215025_CustomersTable.cs" />
-    <Compile Include="Migrations\201907011215025_CustomersTable.Designer.cs">
-      <DependentUpon>201907011215025_CustomersTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907011305054_CustomersTableNullable.cs" />
-    <Compile Include="Migrations\201907011305054_CustomersTableNullable.Designer.cs">
-      <DependentUpon>201907011305054_CustomersTableNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907011344480_CustTableUpdate.cs" />
-    <Compile Include="Migrations\201907011344480_CustTableUpdate.Designer.cs">
-      <DependentUpon>201907011344480_CustTableUpdate.cs</DependentUpon>
+    <Compile Include="Migrations\201907011450080_rebuildDatabase.cs" />
+    <Compile Include="Migrations\201907011450080_rebuildDatabase.Designer.cs">
+      <DependentUpon>201907011450080_rebuildDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -307,32 +275,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906251907400_InitialMigration.resx">
-      <DependentUpon>201906251907400_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906261550259_Customers.resx">
-      <DependentUpon>201906261550259_Customers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906261552560_employees.resx">
-      <DependentUpon>201906261552560_employees.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906271538014_Customers1.resx">
-      <DependentUpon>201906271538014_Customers1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906281927297_Customers2.resx">
-      <DependentUpon>201906281927297_Customers2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906282046487_updatedCustomers.resx">
-      <DependentUpon>201906282046487_updatedCustomers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907011215025_CustomersTable.resx">
-      <DependentUpon>201907011215025_CustomersTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907011305054_CustomersTableNullable.resx">
-      <DependentUpon>201907011305054_CustomersTableNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907011344480_CustTableUpdate.resx">
-      <DependentUpon>201907011344480_CustTableUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907011450080_rebuildDatabase.resx">
+      <DependentUpon>201907011450080_rebuildDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

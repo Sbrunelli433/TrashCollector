@@ -30,6 +30,7 @@ namespace Trash_Collector
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
                 role.Name = "Admin";
                 roleManager.Create(role);
+                roleManager.Create(role);
 
                 //Here we create a Admin super user who will maintain the website                  
 
