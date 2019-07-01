@@ -50,26 +50,27 @@ namespace Trash_Collector.Models
         public int Zipcode { get; set; }
 
         [Display(Name = "Pick Up Day")]
-        public DateTime PickUpDay { get; set; }
+        public DateTime? PickUpDay { get; set; }
 
-        [Display(Name = "Billing")]
-        public double Billing { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#.#}", NullDisplayText = "Billing")]
+        public double Billing { get; }
+
 
         [Display(Name = "Extra Pick Up Day")]
-        public DateTime ExtraPickUpDay { get; set; }
+        public DateTime? ExtraPickUpDay { get; set; }
 
         [Display(Name = "Service Start Date")]
-        public DateTime ServiceStartDate { get; set; }
+        public DateTime? ServiceStartDate { get; set; }
 
         [Display(Name = "Service End Date")]
-        public DateTime ServiceEndDate { get; set; }
+        public DateTime? ServiceEndDate { get; set; }
 
         [Display(Name = "Suspend Service Start Date")]
-        public DateTime SuspendServiceStartDate { get; set; }
+        public DateTime? SuspendServiceStartDate { get; set; }
 
 
         [Display(Name = "Suspend Service End Date")]
-        public DateTime SuspendServiceEndDate { get; set; }
+        public DateTime? SuspendServiceEndDate { get; set; }
     
 
        

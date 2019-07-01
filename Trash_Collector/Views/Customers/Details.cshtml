@@ -11,6 +11,14 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
+            @Html.DisplayNameFor(model => model.ApplicationId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApplicationId)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
 
@@ -74,13 +82,61 @@
             @Html.DisplayFor(model => model.Zipcode)
         </dd>
 
-        @*<dt>
-            @Html.DisplayNameFor(model => model.ApplicationId)
+        <dt>
+            @Html.DisplayNameFor(model => model.PickUpDay)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ApplicationId)
-        </dd>*@
+            @Html.DisplayFor(model => model.PickUpDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Billing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Billing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraPickUpDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraPickUpDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceEndDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuspendServiceStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuspendServiceStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SuspendServiceEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SuspendServiceEndDate)
+        </dd>
 
     </dl>
 </div>

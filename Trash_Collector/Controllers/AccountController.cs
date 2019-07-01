@@ -82,11 +82,11 @@ namespace Trash_Collector.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    if (User.IsInRole("Customer"))
+                    if (this.User.IsInRole("Customer"))
                     {
                         return RedirectToAction("Index", "Customers");
                     }
-                    else if (User.IsInRole("Employee"))
+                    else if (this.User.IsInRole("Employee"))
                     {
                         return RedirectToAction("Index", "Employees");
                     }
