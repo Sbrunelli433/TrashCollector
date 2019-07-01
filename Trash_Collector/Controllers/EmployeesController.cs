@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Trash_Collector.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace Trash_Collector.Controllers
 {
@@ -21,9 +23,12 @@ namespace Trash_Collector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            var customers = db.Customers.ToList();
 
-            return View(customers);
+            return View("Index");
+
+            //var customers = db.Customers.ToList();
+
+            //return View(customers);
         }
 
         // GET: Employees/Details/5
@@ -56,9 +61,11 @@ namespace Trash_Collector.Controllers
         {
             if (ModelState.IsValid)
             {
+                employee.ApplicationId = User.Identity.GetUserId();
+
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = employee.Id });
             }
 
             return View(employee);
@@ -71,7 +78,8 @@ namespace Trash_Collector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
+            Employee employee = db.Employees.Where(c => c.Id == id).Include(c => c.ApplicationUser).FirstOrDefault();
+
             if (employee == null)
             {
                 return HttpNotFound();

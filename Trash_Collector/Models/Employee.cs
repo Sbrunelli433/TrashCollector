@@ -13,6 +13,11 @@ namespace Trash_Collector.Models
         public int Id{ get; set; }
 
 
+        [ForeignKey("ApplicationUser")]
+        [Display(Name = "Application Id")]
+        public string ApplicationId { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
@@ -36,5 +41,8 @@ namespace Trash_Collector.Models
 
         [Display(Name = "Zipcode")]
         public int Zipcode { get; set; }
+
+        [Display(Name = "Current Date")]
+        public DateTime? CurrentDate { get; }
     }
 }

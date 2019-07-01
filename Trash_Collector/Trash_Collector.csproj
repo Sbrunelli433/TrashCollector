@@ -191,6 +191,22 @@
     <Compile Include="Migrations\201907011846403_customersUpdateMigrationAgain.Designer.cs">
       <DependentUpon>201907011846403_customersUpdateMigrationAgain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907012014290_employeesMigration.cs" />
+    <Compile Include="Migrations\201907012014290_employeesMigration.Designer.cs">
+      <DependentUpon>201907012014290_employeesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907012041247_employeeModels.cs" />
+    <Compile Include="Migrations\201907012041247_employeeModels.Designer.cs">
+      <DependentUpon>201907012041247_employeeModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907012101442_employeeUpdate.cs" />
+    <Compile Include="Migrations\201907012101442_employeeUpdate.Designer.cs">
+      <DependentUpon>201907012101442_employeeUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907012113574_addedDate.cs" />
+    <Compile Include="Migrations\201907012113574_addedDate.Designer.cs">
+      <DependentUpon>201907012113574_addedDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -258,10 +274,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_LayoutCustomer.cshtml" />
     <Content Include="Views\Shared\_LayoutEmployee.cshtml" />
-    <Content Include="Views\Employees\Index.cshtml" />
-    <Content Include="Views\Employees\Create.cshtml" />
-    <Content Include="Views\Employees\Delete.cshtml" />
-    <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Customers\Create.cshtml" />
     <Content Include="Views\Customers\Delete.cshtml" />
@@ -270,6 +282,11 @@
     <Content Include="Views\Customers\_ViewStart.cshtml" />
     <Content Include="Views\Employees\_ViewStart.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\createee.cshtml" />
+    <Content Include="Views\Employees\iindeexx.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +316,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907011846403_customersUpdateMigrationAgain.resx">
       <DependentUpon>201907011846403_customersUpdateMigrationAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907012014290_employeesMigration.resx">
+      <DependentUpon>201907012014290_employeesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907012041247_employeeModels.resx">
+      <DependentUpon>201907012041247_employeeModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907012101442_employeeUpdate.resx">
+      <DependentUpon>201907012101442_employeeUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907012113574_addedDate.resx">
+      <DependentUpon>201907012113574_addedDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
