@@ -21,8 +21,9 @@ namespace Trash_Collector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
-            var employees = db.Employees.ToList();
-            return View(employees);
+            var customers = db.Customers.ToList();
+
+            return View(customers);
         }
 
         // GET: Employees/Details/5

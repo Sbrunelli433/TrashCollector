@@ -7,16 +7,31 @@ using Trash_Collector.Models;
 
 namespace Trash_Collector.Controllers
 {
+    [Authorize]
+
     public class HomeController : Controller
     {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
+  
         private ApplicationDbContext db = new ApplicationDbContext();
 
 
         public ActionResult Index()
         {
-            //return View(db.AspNetUsers.ToList());
-            return View(db.Customers.ToList());
+            if (this.User.IsInRole("Customer"))
+            {
+                return RedirectToAction("Index", "Customers");
+            }
+            else if (this.User.IsInRole("Employee"))
+            {
+                return RedirectToAction("Index", "Employees");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult About()

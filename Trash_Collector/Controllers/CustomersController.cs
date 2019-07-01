@@ -22,11 +22,11 @@ namespace Trash_Collector.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            //return View(db.Customers.ToList());
+            return View("Index");
 
             //var customers = db.Customers.Include(m => m.ApplicationId).ToList();
-            var customers = db.Customers.Select(i => i.ApplicationId).SingleOrDefault();
-            return View(customers);
+            //var customers = db.Customers.Select(i => i.ApplicationId).SingleOrDefault();
+            //return View(customers);
         }
 
         // GET: Customers/Details/5
@@ -89,42 +89,42 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Address, ApplicationId, ApplicationUser, City, EmailAddress, FirstName, Id, LastName, State, Zipcode, Billing")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Address, UserName, ApplicationId, ApplicationUser, City, EmailAddress, FirstName, Id, LastName, State, Zipcode, PickUpDay, ExraPickUpDay, ServiceStartDate, ServiceEndDate, SuspendServiceStartDate, SuspendServiceEndDate ")] Customer customer)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = customer.Id });
             }
             return View(customer);
         }
 
         // GET: Customers/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Customer customer = db.Customers.Find(id);
-            if (customer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(customer);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Customer customer = db.Customers.Find(id);
+        //    if (customer == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(customer);
+        //}
 
         // POST: Customers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Customer customer = db.Customers.Find(id);
-            db.Customers.Remove(customer);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Customer customer = db.Customers.Find(id);
+        //    db.Customers.Remove(customer);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         protected override void Dispose(bool disposing)
         {
