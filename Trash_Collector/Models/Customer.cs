@@ -52,6 +52,25 @@ namespace Trash_Collector.Models
         [Display(Name = "Pick Up Day")]
         public DateTime PickUpDay { get; set; }
 
+        [Display(Name = "Billing")]
+        public double Billing { get; set; }
+
+        [Display(Name = "Extra Pick Up Day")]
+        public DateTime ExtraPickUpDay { get; set; }
+
+        [Display(Name = "Service Start Date")]
+        public DateTime ServiceStartDate { get; set; }
+
+        [Display(Name = "Service End Date")]
+        public DateTime ServiceEndDate { get; set; }
+
+        [Display(Name = "Suspend Service Start Date")]
+        public DateTime SuspendServiceStartDate { get; set; }
+
+
+        [Display(Name = "Suspend Service End Date")]
+        public DateTime SuspendServiceEndDate { get; set; }
+    
 
        
         //public virtual IEnumerable<ApplicationId> ApplicationIds { get; set; }
