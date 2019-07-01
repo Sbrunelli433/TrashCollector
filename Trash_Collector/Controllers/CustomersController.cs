@@ -32,16 +32,37 @@ namespace Trash_Collector.Controllers
         // GET: Customers/Details/5
         public ActionResult Details(int? id)
         {
+            var userId = User.Identity.GetUserId();
+            Customer customer = db.Customers.Where(c => c.ApplicationId == userId).Include(c => c.ApplicationUser).FirstOrDefault();
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+
+            //Customer customer = db.Customers.Find(id);
             if (customer == null)
             {
                 return HttpNotFound();
             }
             return View(customer);
+
+
+            //var userId = User.Identity.GetUserId();
+            //Customer customer = db.Customers.Where(c => c.ApplicationId == userId).Include(c => c.ApplicationUser).FirstOrDefault();
+
+            //if (userId == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //// Customer customer = db.Customers.Find(id);
+
+            //if (customer == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(customer);
         }
 
         // GET: Customers/Create
@@ -76,7 +97,7 @@ namespace Trash_Collector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Customer customer = db.Customers.Find(id);
+            Customer customer = db.Customers.Where(c => c.Id == id).Include(c => c.ApplicationUser).FirstOrDefault();
             if (customer == null)
             {
                 return HttpNotFound();

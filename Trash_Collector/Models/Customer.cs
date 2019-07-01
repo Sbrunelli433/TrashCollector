@@ -25,6 +25,13 @@ namespace Trash_Collector.Models
         [StringLength(50)]
         public string LastName { get; set; }
 
+
+        [Display(Name = "Email Address")]
+        public string EmailAddress { get;  }
+
+        [Display(Name = "Username")]
+        public string Username { get;  }
+
         [Display(Name = "Address")]
         [StringLength(50)]
         public string Address { get; set; }

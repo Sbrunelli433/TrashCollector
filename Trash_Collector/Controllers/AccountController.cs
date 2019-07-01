@@ -183,14 +183,11 @@ namespace Trash_Collector.Controllers
 
                     if (model.UserRoles == "Customer")
                     {
-                        User.Identity.GetUserId();
-
-                        return RedirectToAction("Create", "Customers");
+                        return RedirectToAction("Create", "Customers" );
                     }
+
                     else if (model.UserRoles == "Employee")
                     {
-                        User.Identity.GetUserId();
-
                         return RedirectToAction("Index", "Employees");
                     }
 

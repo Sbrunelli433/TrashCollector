@@ -183,6 +183,14 @@
     <Compile Include="Migrations\201907011647306_customerMigrationConsolidation.Designer.cs">
       <DependentUpon>201907011647306_customerMigrationConsolidation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907011811459_lunchMigration.cs" />
+    <Compile Include="Migrations\201907011811459_lunchMigration.Designer.cs">
+      <DependentUpon>201907011811459_lunchMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907011846403_customersUpdateMigrationAgain.cs" />
+    <Compile Include="Migrations\201907011846403_customersUpdateMigrationAgain.Designer.cs">
+      <DependentUpon>201907011846403_customersUpdateMigrationAgain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -257,11 +265,11 @@
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Customers\Create.cshtml" />
     <Content Include="Views\Customers\Delete.cshtml" />
-    <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\_ViewStart.cshtml" />
     <Content Include="Views\Employees\_ViewStart.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -285,6 +293,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907011647306_customerMigrationConsolidation.resx">
       <DependentUpon>201907011647306_customerMigrationConsolidation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907011811459_lunchMigration.resx">
+      <DependentUpon>201907011811459_lunchMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907011846403_customersUpdateMigrationAgain.resx">
+      <DependentUpon>201907011846403_customersUpdateMigrationAgain.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
