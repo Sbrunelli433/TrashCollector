@@ -23,8 +23,21 @@ namespace Trash_Collector.Controllers
         // GET: Employees
         public ActionResult Index()
         {
+            string currentUserId = User.Identity.GetUserId();
+            Employee employee = db.Employees.Where(e => e.ApplicationId == currentUserId).SingleOrDefault();
+            DateTime currentDate = new DateTime();
+            currentDate = DateTime.Today;
+            int thisDay = (int)DateTime.Now.DayOfWeek;
 
-            return View("Index");
+            var pickUp = db.Customers.Where(p => p.Zipcode == employee.Zipcode && (p.collection.CompareTo(employee.ConfirmPickup) == thisDay) || (p.extraCollection.CompareTo(employee.ConfirmExtraPickup) == thisDay)).ToList();
+            for (int i = 0; i < pickUp.Count; i++)
+            {
+                if (pickUp[i].collection.Equals(employee.ConfirmPickup));
+                {
+                    pickUp[i].extraCollection.Equals(employee.ConfirmExtraPickup);
+                }
+            }
+            return View(pickUp);
 
             //var customers = db.Customers.ToList();
 

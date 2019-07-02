@@ -51,12 +51,17 @@ namespace Trash_Collector.Models
         [Display(Name = "Pick Up Day")]
         public DateTime? PickUpDay { get; set; }
 
+        [Display(Name = "Collection")]
+        public int collection { get; set; }
+
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#.#}", NullDisplayText = "Billing")]
         public double Billing { get; }
 
 
         [Display(Name = "Extra Pick Up Day")]
         public DateTime? ExtraPickUpDay { get; set; }
+        [Display(Name = "Extra Collection")]
+        public int extraCollection { get; set; }
 
         [Display(Name = "Service Start Date")]
         public DateTime? ServiceStartDate { get; set; }
