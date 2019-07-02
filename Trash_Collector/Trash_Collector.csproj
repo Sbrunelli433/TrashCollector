@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201907012358542_customerPickUpAddition2.Designer.cs">
       <DependentUpon>201907012358542_customerPickUpAddition2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907020008599_customerBilling.cs" />
+    <Compile Include="Migrations\201907020008599_customerBilling.Designer.cs">
+      <DependentUpon>201907020008599_customerBilling.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -341,6 +345,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907012358542_customerPickUpAddition2.resx">
       <DependentUpon>201907012358542_customerPickUpAddition2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907020008599_customerBilling.resx">
+      <DependentUpon>201907020008599_customerBilling.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -30,11 +30,20 @@ namespace Trash_Collector.Controllers
             int thisDay = (int)DateTime.Now.DayOfWeek;
 
             var pickUp = db.Customers.Where(p => p.Zipcode == employee.Zipcode && (p.collection.CompareTo(employee.ConfirmPickup) == thisDay) || (p.extraCollection.CompareTo(employee.ConfirmExtraPickup) == thisDay)).ToList();
+            //foreach (var customer in pickUp)
+            //{
+            //    employee.ConfirmPickup.Equals(customer.Billing += 20) && employee.ConfirmExtraPickup.Equals(customer.Billing += 25);
+
+            //}
             for (int i = 0; i < pickUp.Count; i++)
             {
-                if (pickUp[i].collection.Equals(employee.ConfirmPickup));
+                if (pickUp[i].collection.Equals(employee.ConfirmPickup))
                 {
-                    pickUp[i].extraCollection.Equals(employee.ConfirmExtraPickup);
+                    employee.ChargeToBill.Equals(20);
+                }
+                if (pickUp[i].collection.Equals(employee.ConfirmExtraPickup))
+                {
+                    employee.ChargeToBill.Equals(25);
                 }
             }
             return View(pickUp);
@@ -78,7 +87,7 @@ namespace Trash_Collector.Controllers
 
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Details", new { id = employee.Id });
+                return RedirectToAction("Index", new { zipcode = employee.Zipcode });
             }
 
             return View(employee);

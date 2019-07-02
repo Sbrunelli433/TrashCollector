@@ -55,7 +55,7 @@ namespace Trash_Collector.Models
         public int collection { get; set; }
 
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:#.#}", NullDisplayText = "Billing")]
-        public double Billing { get; }
+        public double Billing { get; set; }
 
 
         [Display(Name = "Extra Pick Up Day")]
