@@ -75,9 +75,13 @@ namespace Trash_Collector.Models
 
         [Display(Name = "Suspend Service End Date")]
         public DateTime? SuspendServiceEndDate { get; set; }
-    
 
-       
+        public IEnumerable<int> Collection { get; set; }
+        public IEnumerable<int> ExtraCollection { get; set; }
+
+
+
+
         //public virtual IEnumerable<ApplicationId> ApplicationIds { get; set; }
 
 
@@ -86,7 +90,7 @@ namespace Trash_Collector.Models
         //See Bill
         //Trash Collection Start Date & End Date
         //Suspend Service
-            //Suspend Service Start Date & End Date
-            //Resume Service Start Date
+        //Suspend Service Start Date & End Date
+        //Resume Service Start Date
     }
 }

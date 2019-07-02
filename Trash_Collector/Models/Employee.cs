@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -43,5 +45,6 @@ namespace Trash_Collector.Models
 
         [Display (Name = "Charge to Bill")]
         public double ChargeToBill { get; set; }
+
     }
 }

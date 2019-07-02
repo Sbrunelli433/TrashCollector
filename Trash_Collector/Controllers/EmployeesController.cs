@@ -29,7 +29,7 @@ namespace Trash_Collector.Controllers
             currentDate = DateTime.Today;
             int thisDay = (int)DateTime.Now.DayOfWeek;
 
-            var pickUp = db.Customers.Where(p => p.Zipcode == employee.Zipcode && (p.collection.CompareTo(employee.ConfirmPickup) == thisDay) || (p.extraCollection.CompareTo(employee.ConfirmExtraPickup) == thisDay)).ToList();
+            //var pickUp = db.Customers.Where(c => c.Zipcode == employee.Zipcode && c.Collection.Where(employee.ConfirmPickup == thisDay) ||  c.ExtraCollection.Where(employee.ConfirmExtraPickup == thisDay)).ToList();
             //foreach (var customer in pickUp)
             //{
             //    employee.ConfirmPickup.Equals(customer.Billing += 20) && employee.ConfirmExtraPickup.Equals(customer.Billing += 25);
@@ -40,6 +40,7 @@ namespace Trash_Collector.Controllers
                 if (pickUp[i].collection.Equals(employee.ConfirmPickup))
                 {
                     employee.ChargeToBill.Equals(20);
+                    pickUp[i].extraCollection.Equals(employee.ConfirmExtraPickup);
                 }
                 if (pickUp[i].collection.Equals(employee.ConfirmExtraPickup))
                 {
