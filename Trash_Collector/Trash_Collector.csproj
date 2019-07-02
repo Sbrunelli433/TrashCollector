@@ -219,6 +219,14 @@
     <Compile Include="Migrations\201907020008599_customerBilling.Designer.cs">
       <DependentUpon>201907020008599_customerBilling.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907021217401_employeeTable.cs" />
+    <Compile Include="Migrations\201907021217401_employeeTable.Designer.cs">
+      <DependentUpon>201907021217401_employeeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907021307535_employeeListUpdate.cs" />
+    <Compile Include="Migrations\201907021307535_employeeListUpdate.Designer.cs">
+      <DependentUpon>201907021307535_employeeListUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -297,7 +305,6 @@
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
-    <Content Include="Views\Employees\createee.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -348,6 +355,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907020008599_customerBilling.resx">
       <DependentUpon>201907020008599_customerBilling.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907021217401_employeeTable.resx">
+      <DependentUpon>201907021217401_employeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907021307535_employeeListUpdate.resx">
+      <DependentUpon>201907021307535_employeeListUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -12,7 +12,7 @@ namespace Trash_Collector.Models
     public class Employee
     {
         [Key]
-        public int Id{ get; set; }
+        public int Id { get; set; }
 
 
         [ForeignKey("ApplicationUser")]
@@ -40,11 +40,15 @@ namespace Trash_Collector.Models
 
         [Display(Name = "Confirm Pickup")]
         public bool ConfirmPickup { get; set; }
-        [Display(Name ="Confirm Extra Pickup")]
+        [Display(Name = "Confirm Extra Pickup")]
         public bool ConfirmExtraPickup { get; set; }
 
-        [Display (Name = "Charge to Bill")]
+        [Display(Name = "Charge to Bill")]
         public double ChargeToBill { get; set; }
+        public IEnumerable<Employee> Employees { get; set; }
+
+        [Display(Name ="Today's Pickups")]
+        public List<object> PickUpThisDay { get; set; }
 
     }
 }

@@ -16,43 +16,66 @@ namespace Trash_Collector.Controllers
     {
 
         ApplicationDbContext db;
+        private object pickUpThisDay;
+
+
         public EmployeesController()
         {
             db = new ApplicationDbContext();
         }
         // GET: Employees
-        public ActionResult Index()
+        public ActionResult Index([Bind(Include = "Address,Zipcode,Collection")] Employee employee)
         {
-            string currentUserId = User.Identity.GetUserId();
-            Employee employee = db.Employees.Where(e => e.ApplicationId == currentUserId).SingleOrDefault();
-            DateTime currentDate = new DateTime();
-            currentDate = DateTime.Today;
-            int thisDay = (int)DateTime.Now.DayOfWeek;
+            if (ModelState.IsValid)
+            {
+                string currentUserId = User.Identity.GetUserId();
+                //Employee employee = 
+                db.Employees.Where(e => e.ApplicationId == currentUserId).SingleOrDefault();
+                DateTime currentDate = new DateTime();
+                currentDate = DateTime.Today;
+                int thisDay = (int)DateTime.Now.DayOfWeek;
+                List<int> DailyPickUps = new List<int>();
+                var pickUpThisDay = db.Customers.Where(c => c.Zipcode == employee.Zipcode).ToList();
+                db.SaveChanges();
+                ViewBag.Stuff = (pickUpThisDay);
+                }
+            //ViewBag.pickUpThisDay = new SelectList(pickUpThisDay, "Zipcode", "Collection", thisDay);
+            return RedirectToAction("Index");
 
-            //var pickUp = db.Customers.Where(c => c.Zipcode == employee.Zipcode && c.Collection.Where(employee.ConfirmPickup == thisDay) ||  c.ExtraCollection.Where(employee.ConfirmExtraPickup == thisDay)).ToList();
+
+
+            if (pickUpThisDay != null)
+                {
+                    return ViewBag(pickUpThisDay); 
+
+                }
+
+                return View("Index");
+            }
+            //||  c.ExtraCollection.Where(employee.ConfirmExtraPickup == thisDay)).ToList();
             //foreach (var customer in pickUp)
             //{
             //    employee.ConfirmPickup.Equals(customer.Billing += 20) && employee.ConfirmExtraPickup.Equals(customer.Billing += 25);
 
             //}
-            for (int i = 0; i < pickUp.Count; i++)
-            {
-                if (pickUp[i].collection.Equals(employee.ConfirmPickup))
-                {
-                    employee.ChargeToBill.Equals(20);
-                    pickUp[i].extraCollection.Equals(employee.ConfirmExtraPickup);
-                }
-                if (pickUp[i].collection.Equals(employee.ConfirmExtraPickup))
-                {
-                    employee.ChargeToBill.Equals(25);
-                }
-            }
-            return View(pickUp);
+            //for (int i = 0; i < pickUp.Count; i++)
+            //{
+            //    if (pickUp[i].collection.Equals(employee.ConfirmPickup))
+            //    {
+            //        employee.ChargeToBill.Equals(20);
+            //        pickUp[i].extraCollection.Equals(employee.ConfirmExtraPickup);
+            //    }
+            //    if (pickUp[i].collection.Equals(employee.ConfirmExtraPickup))
+            //    {
+            //        employee.ChargeToBill.Equals(25);
+            //    }
+            //}
+            //return View(pickUp);
 
             //var customers = db.Customers.ToList();
 
-            //return View(customers);
-        }
+            //return View("Index");
+        
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
