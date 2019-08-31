@@ -33,6 +33,8 @@ namespace Trash_Collector.Models
             return new ApplicationDbContext();
         }
 
+        public System.Data.Entity.DbSet<Trash_Collector.Models.Collection> Collections { get; set; }
+
         //public System.Data.Entity.DbSet<Trash_Collector.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

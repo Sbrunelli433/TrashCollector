@@ -1,0 +1,74 @@
+﻿@model Trash_Collector.Models.Collection
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Collection</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.RegularCollectionDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RegularCollectionDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CollectionConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CollectionConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraCollectionDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraCollectionDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExtraCollectionConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExtraCollectionConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemporarySuspensionStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemporarySuspensionStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TemporarySuspensionEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TemporarySuspensionEnd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
