@@ -227,8 +227,13 @@
     <Compile Include="Migrations\201907021307535_employeeListUpdate.Designer.cs">
       <DependentUpon>201907021307535_employeeListUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907021908357_Removed props from Customer model.cs" />
+    <Compile Include="Migrations\201907021908357_Removed props from Customer model.Designer.cs">
+      <DependentUpon>201907021908357_Removed props from Customer model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Collection.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -305,6 +310,7 @@
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Employees\Create.cshtml" />
     <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Customers\create2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -361,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907021307535_employeeListUpdate.resx">
       <DependentUpon>201907021307535_employeeListUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907021908357_Removed props from Customer model.resx">
+      <DependentUpon>201907021908357_Removed props from Customer model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -7,23 +9,43 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Trash_Collector.Models;
-using Microsoft.AspNet.Identity;
 
 
 namespace Trash_Collector.Controllers
 {
     public class EmployeesController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        ApplicationDbContext db;
-        private object pickUpThisDay;
-
-
-        public EmployeesController()
-        {
-            db = new ApplicationDbContext();
-        }
         // GET: Employees
+        public ActionResult Index()
+        {
+            string currentUserId = User.Identity.GetUserId();
+            Employee employee = db.Employees.Where(e => e.ApplicationId == currentUserId).Single();
+            DateTime todaysDate = new DateTime();
+            todaysDate = DateTime.Today;
+            int today = (int)System.DateTime.Now.DayOfWeek;
+            var customerCollections = db.Customers.Where(c => c.Zipcode == employee.Zipcode 
+            && ((int)c.Collection.RegularPickupDay == today
+            || c.Collection.ExtraPickupDay == todaysDate))
+                .Include(c => c.Collection)
+                .ToList();
+
+            for (int i = 0; i < customerCollections.Count; i++)
+            {
+                if(customerCollections[i].Collection.TemporarySuspensionStart != null
+                    && customerCollections[i].Collection.TemporarySuspensionEnd != null)
+                {
+                    if (todaysDate.Ticks > ((DateTime)customerCollections[i].Collection.TemporarySuspensionStart)
+                        .Ticks && todaysDate.Ticks< ((DateTime)customerCollections[i].Collection.TemporarySuspensionEnd).Ticks)
+                    {
+                        customerCollections.RemoveAt(i);
+                    }
+                }
+            }
+            return View(customerCollections);
+            
+        }
         public ActionResult Index([Bind(Include = "Address,Zipcode,Collection")] Employee employee)
         {
             if (ModelState.IsValid)
@@ -40,7 +62,7 @@ namespace Trash_Collector.Controllers
                 ViewBag.Stuff = (pickUpThisDay);
                 }
             //ViewBag.pickUpThisDay = new SelectList(pickUpThisDay, "Zipcode", "Collection", thisDay);
-            return RedirectToAction("Index");
+            return View("Index");
 
 
 
