@@ -14,19 +14,19 @@ namespace Trash_Collector.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Regular Pickup Day")]
-        public DayOfWeek? RegularPickupDay { get; set; }
+        [DisplayName("Regular Collection Day")]
+        public DayOfWeek? RegularCollectionDay { get; set; }
 
-        [DisplayName("Pickup Confirmed")]
-        public bool PickupConfirmed { get; set; }
+        [DisplayName("Collection Confirmed")]
+        public bool CollectionConfirmed { get; set; }
 
-        [DisplayName("Extra Pickup Day")]
+        [DisplayName("Extra Collection Day")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? ExtraPickupDay { get; set; }
+        public DateTime? ExtraCollectionDay { get; set; }
 
-        [DisplayName("Extra Pickup Confirmed")]
-        public bool ExtraPickupConfirmed { get; set; }
+        [DisplayName("Extra Collection Confirmed")]
+        public bool ExtraCollectionConfirmed { get; set; }
 
         public double Bill { get; set; }
 

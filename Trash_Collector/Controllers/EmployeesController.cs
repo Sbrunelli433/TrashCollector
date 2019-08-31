@@ -25,79 +25,28 @@ namespace Trash_Collector.Controllers
             DateTime todaysDate = new DateTime();
             todaysDate = DateTime.Today;
             int today = (int)System.DateTime.Now.DayOfWeek;
-            var customerCollections = db.Customers.Where(c => c.Zipcode == employee.Zipcode 
-            && ((int)c.Collection.RegularPickupDay == today
-            || c.Collection.ExtraPickupDay == todaysDate))
+            var customerCollections = db.Customers.Where(c => c.Zipcode == employee.Zipcode
+            && ((int)c.Collection.RegularCollectionDay == today
+            || c.Collection.ExtraCollectionDay == todaysDate))
                 .Include(c => c.Collection)
                 .ToList();
 
             for (int i = 0; i < customerCollections.Count; i++)
             {
-                if(customerCollections[i].Collection.TemporarySuspensionStart != null
+                if (customerCollections[i].Collection.TemporarySuspensionStart != null
                     && customerCollections[i].Collection.TemporarySuspensionEnd != null)
                 {
                     if (todaysDate.Ticks > ((DateTime)customerCollections[i].Collection.TemporarySuspensionStart)
-                        .Ticks && todaysDate.Ticks< ((DateTime)customerCollections[i].Collection.TemporarySuspensionEnd).Ticks)
+                        .Ticks && todaysDate.Ticks < ((DateTime)customerCollections[i].Collection.TemporarySuspensionEnd).Ticks)
                     {
                         customerCollections.RemoveAt(i);
                     }
                 }
             }
             return View(customerCollections);
-            
+
         }
-        public ActionResult Index([Bind(Include = "Address,Zipcode,Collection")] Employee employee)
-        {
-            if (ModelState.IsValid)
-            {
-                string currentUserId = User.Identity.GetUserId();
-                //Employee employee = 
-                db.Employees.Where(e => e.ApplicationId == currentUserId).SingleOrDefault();
-                DateTime currentDate = new DateTime();
-                currentDate = DateTime.Today;
-                int thisDay = (int)DateTime.Now.DayOfWeek;
-                List<int> DailyPickUps = new List<int>();
-                var pickUpThisDay = db.Customers.Where(c => c.Zipcode == employee.Zipcode).ToList();
-                db.SaveChanges();
-                ViewBag.Stuff = (pickUpThisDay);
-                }
-            //ViewBag.pickUpThisDay = new SelectList(pickUpThisDay, "Zipcode", "Collection", thisDay);
-            return View("Index");
 
-
-
-            if (pickUpThisDay != null)
-                {
-                    return ViewBag(pickUpThisDay); 
-
-                }
-
-                return View("Index");
-            }
-            //||  c.ExtraCollection.Where(employee.ConfirmExtraPickup == thisDay)).ToList();
-            //foreach (var customer in pickUp)
-            //{
-            //    employee.ConfirmPickup.Equals(customer.Billing += 20) && employee.ConfirmExtraPickup.Equals(customer.Billing += 25);
-
-            //}
-            //for (int i = 0; i < pickUp.Count; i++)
-            //{
-            //    if (pickUp[i].collection.Equals(employee.ConfirmPickup))
-            //    {
-            //        employee.ChargeToBill.Equals(20);
-            //        pickUp[i].extraCollection.Equals(employee.ConfirmExtraPickup);
-            //    }
-            //    if (pickUp[i].collection.Equals(employee.ConfirmExtraPickup))
-            //    {
-            //        employee.ChargeToBill.Equals(25);
-            //    }
-            //}
-            //return View(pickUp);
-
-            //var customers = db.Customers.ToList();
-
-            //return View("Index");
-        
 
         // GET: Employees/Details/5
         public ActionResult Details(int? id)
@@ -125,15 +74,14 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Address, ApplicationId, ApplicationUser, City, EmailAddress, FirstName, Id, LastName, State, Username, Zipcode")] Employee employee)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,zipcode")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 employee.ApplicationId = User.Identity.GetUserId();
-
                 db.Employees.Add(employee);
                 db.SaveChanges();
-                return RedirectToAction("Index", new { zipcode = employee.Zipcode });
+                return RedirectToAction("Index", "Employees", new { zipcode = employee.Zipcode });
             }
 
             return View(employee);
@@ -146,8 +94,7 @@ namespace Trash_Collector.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Where(c => c.Id == id).Include(c => c.ApplicationUser).FirstOrDefault();
-
+            Employee employee = db.Employees.Find(id);
             if (employee == null)
             {
                 return HttpNotFound();
@@ -160,7 +107,7 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Address, ApplicationId, ApplicationUser, City, EmailAddress, FirstName, Id, LastName, State, Username, Zipcode")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Zipcode")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -204,6 +151,87 @@ namespace Trash_Collector.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // Get Collections by dat
+        public ActionResult CollectionsByDay(int dayOfWeek)
+        {
+            string currentUserId = User.Identity.GetUserId();
+            Employee employee = db.Employees.Where(e => e.ApplicationId == currentUserId).Single();
+            DateTime todaysDate = new DateTime();
+
+
+            var customerCollections = db.Customers.Where(c => c.Zipcode == employee.Zipcode
+            && ((int)c.Collection.RegularCollectionDay == dayOfWeek))
+                .Include(c => c.Collection)
+                .ToList();
+            for (int i = 0; i < customerCollections.Count; i++)
+            {
+                if (customerCollections[i].Collection.TemporarySuspensionStart != null && customerCollections[i].Collection.TemporarySuspensionEnd != null)
+                {
+                    if (todaysDate.Ticks > ((DateTime)customerCollections[i].Collection.TemporarySuspensionStart)
+                        .Ticks && todaysDate.Ticks < ((DateTime)customerCollections[i].Collection.TemporarySuspensionEnd).Ticks)
+                    {
+                        customerCollections.RemoveAt(i);
+                    }
+                }
+            }
+            return View(customerCollections);
+        }
+
+        //get collection details
+        public ActionResult ShowCustomerAddress(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Find(id);
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer);
+        }
+
+        //get confirm collection
+        public ActionResult ConfirmCollection(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Customer customer = db.Customers.Where(c => c.Id == id)
+                .Include(c => c.Collection).
+                FirstOrDefault();
+
+            if (customer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(customer.Collection);
+        }
+
+        //post confirm collection
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmCollection([Bind(Include = "Id,RegularPickupDay,PickupConfirmed,ExtraPickupDay,ExtraPickupConfirmed,TemporarySuspensionStart,TemporarySuspensionEnd")] Collection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(collection).State = EntityState.Modified;
+                if (collection.CollectionConfirmed == true)
+                {
+                    collection.Bill += 25;
+                }
+                if(collection.ExtraCollectionConfirmed == true)
+                {
+                    collection.Bill += 25;
+                }
+                db.SaveChanges();
+                return RedirectToAction("index");
+            }
+            return View(collection);
         }
     }
 }
