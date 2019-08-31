@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -46,13 +47,18 @@ namespace Trash_Collector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RegularCollectionDay,CollectionConfirmed,ExtraCollectionDay,ExtraCollectionConfirmed,Bill,TemporarySuspensionStart,TemporarySuspensionEnd")] Collection collection)
+        public ActionResult Create([Bind(Include = "Id,RegularCollectionDay,CollectionConfirmed,ExtraCollectionDay,ExtraCollectionConfirmed,Bill,TemporarySuspensionStart,TemporarySuspensionEnd")] Collection collection, int id)
         {
             if (ModelState.IsValid)
             {
                 db.Collections.Add(collection);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                string currentUserId = User.Identity.GetUserId();
+
+                Customer customer = db.Customers.Where(c => c.ApplicationId == currentUserId).Single();
+                customer.CollectionId = id;
+                db.SaveChanges();
+                return RedirectToAction("Details", new { id = collection.Id });
             }
 
             return View(collection);
@@ -84,7 +90,7 @@ namespace Trash_Collector.Controllers
             {
                 db.Entry(collection).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = collection.Id });
             }
             return View(collection);
         }
